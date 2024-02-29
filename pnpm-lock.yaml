@@ -60,8 +60,8 @@ importers:
         specifier: npm:prettier@^2
         version: /prettier@2.8.8
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-jest:
         specifier: 29.1.2
         version: 29.1.2(@babel/core@7.23.2)(jest@29.7.0)(typescript@5.0.2)
@@ -488,7 +488,7 @@ importers:
         specifier: ^1.13.5
         version: 1.13.5
       copy-webpack-plugin:
-        specifier: 5.1.2
+        specifier: '5'
         version: 5.1.2(webpack@5.90.0)
       cross-env:
         specifier: ^7.0.3
@@ -963,12 +963,6 @@ importers:
       '@rspack/plugin-node-polyfill':
         specifier: workspace:^
         version: link:../packages/rspack-plugin-node-polyfill
-      '@types/node':
-        specifier: ^20.9.4
-        version: 20.9.4
-      '@types/rimraf':
-        specifier: 3.0.2
-        version: 3.0.2
       '@types/watchpack':
         specifier: ^2.4.0
         version: 2.4.0
@@ -1038,14 +1032,11 @@ importers:
       react-relay:
         specifier: ^14.1.0
         version: 14.1.0(react@18.2.0)
-      rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
       sass:
-        specifier: ^1.56.2
+        specifier: 1.56.2
         version: 1.56.2
       sass-loader:
-        specifier: ^13.2.0
+        specifier: 13.2.0
         version: 13.2.0(sass@1.56.2)(webpack@5.90.0)
       source-map:
         specifier: ^0.7.4
@@ -14505,6 +14496,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+
+  /rimraf@5.0.5:
+    resolution: {integrity: sha512-CqDakW+hMe/Bz202FPEymy68P+G50RfMQK+Qo5YUqc9SPipvbGjCGKd0RSKEelbsfQuw3g5NZDSrlZZAJurH1A==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      glob: 10.3.10
+    dev: true
 
   /ripemd160@2.0.2:
     resolution: {integrity: sha512-ii4iagi25WusVoiC4B4lq7pbXfAp3D9v5CwfkY33vffw2+pkDjY1D8GaN7spsxvCSx8dkPqOZCEZyfxcmJG2IA==}

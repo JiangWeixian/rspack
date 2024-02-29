@@ -7,7 +7,7 @@ import {
 	ECompareResultType,
 	TModuleCompareResult
 } from "../";
-import rimraf from "rimraf";
+import { rimraf } from "rimraf";
 
 const DEFAULT_CASE_CONFIG: Partial<IDiffProcessorOptions> = {
 	webpackPath: require.resolve("webpack"),
