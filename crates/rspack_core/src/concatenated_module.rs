@@ -551,6 +551,7 @@ impl Module for ConcatenatedModule {
       need_create_require: Default::default(),
       json_data: Default::default(),
       module_concatenation_bailout: Default::default(),
+      directives: Default::default(),
     };
     self.clear_diagnostics();
 

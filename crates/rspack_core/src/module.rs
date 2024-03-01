@@ -52,6 +52,7 @@ pub struct BuildInfo {
   pub need_create_require: bool,
   pub json_data: Option<JsonValue>,
   pub module_concatenation_bailout: Option<String>,
+  pub directives: Vec<String>,
 }
 
 impl Default for BuildInfo {
@@ -70,6 +71,7 @@ impl Default for BuildInfo {
       need_create_require: false,
       json_data: None,
       module_concatenation_bailout: None,
+      directives: Vec::default(),
     }
   }
 }

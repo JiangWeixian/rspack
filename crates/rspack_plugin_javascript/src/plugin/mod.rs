@@ -10,6 +10,7 @@ pub mod module_concatenation_plugin;
 mod side_effects_flag_plugin;
 
 use std::hash::Hash;
+mod react_server_components_plugin;
 
 pub use drive::*;
 pub use flag_dependency_exports_plugin::*;
@@ -17,6 +18,7 @@ pub use flag_dependency_usage_plugin::*;
 pub use mangle_exports_plugin::*;
 pub use module_concatenation_plugin::*;
 use once_cell::sync::Lazy;
+pub use react_server_components_plugin::*;
 use rspack_core::rspack_sources::{BoxSource, ConcatSource, RawSource, SourceExt};
 use rspack_core::{
   render_init_fragments, ChunkRenderContext, ChunkUkey, Compilation, CompilationId, RuntimeGlobals,
