@@ -56,6 +56,7 @@ export * from "./CopyRspackPlugin";
 export * from "./SwcJsMinimizerPlugin";
 export * from "./SwcCssMinimizerPlugin";
 export * from "./RSCClientEntryPlugin";
+export * from "./RSCClientReferenceManifestRspackPlugin";
 
 export * from "./JsLoaderRspackPlugin";
 export * from "./css-extract";
