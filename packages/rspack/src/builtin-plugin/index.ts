@@ -63,6 +63,7 @@ export * from "./WarnCaseSensitiveModulesPlugin";
 export * from "./WebWorkerTemplatePlugin";
 export * from "./WorkerPlugin";
 export * from "./RSCClientEntryPlugin";
+export * from "./RSCClientReferenceManifestRspackPlugin";
 
 ///// DEPRECATED /////
 import { RawBuiltins } from "@rspack/binding";

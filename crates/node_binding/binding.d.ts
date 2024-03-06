@@ -191,7 +191,8 @@ export enum BuiltinPluginName {
   CssExtractRspackPlugin = 'CssExtractRspackPlugin',
   JsLoaderRspackPlugin = 'JsLoaderRspackPlugin',
   LazyCompilationPlugin = 'LazyCompilationPlugin',
-  RSCClientEntryRspackPlugin = 'RSCClientEntryRspackPlugin'
+  RSCClientEntryRspackPlugin = 'RSCClientEntryRspackPlugin',
+  RSCClientReferenceManifestRspackPlugin = 'RSCClientReferenceManifestRspackPlugin'
 }
 
 export function cleanupGlobalTrace(): void
