@@ -66,3 +66,4 @@ export * from "./WebWorkerTemplatePlugin";
 export * from "./WorkerPlugin";
 export * from "./FetchCompileAsyncWasmPlugin";
 export * from "./RSCClientEntryPlugin";
+export * from "./RSCClientReferenceManifestRspackPlugin";

@@ -260,6 +260,7 @@ export type {
 	SwcLoaderTransformConfig,
 	SwcLoaderTsParserConfig
 } from "./builtin-loader/swc/index";
+<<<<<<< HEAD
 
 import * as lightningcss from "./builtin-loader/lightningcss/index";
 
@@ -281,3 +282,7 @@ export const experiments: Experiments = {
 		cleanup: cleanupGlobalTrace
 	}
 };
+=======
+export { RSCClientEntryPlugin } from "./builtin-plugin";
+export { RSCClientReferenceManifestRspackPlugin } from "./builtin-plugin";
+>>>>>>> 54206f3db (feat: client ref manifest plugin)
