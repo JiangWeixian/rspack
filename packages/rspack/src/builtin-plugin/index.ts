@@ -64,6 +64,7 @@ export * from "./WebWorkerTemplatePlugin";
 export * from "./WorkerPlugin";
 export * from "./RSCClientEntryPlugin";
 export * from "./RSCClientReferenceManifestRspackPlugin";
+export * from "./RSCServerReferenceManifestRspackPlugin";
 
 ///// DEPRECATED /////
 import { RawBuiltins } from "@rspack/binding";
