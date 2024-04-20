@@ -248,6 +248,8 @@ export { EvalSourceMapDevToolPlugin } from "./builtin-plugin";
 export { EvalDevToolModulePlugin } from "./builtin-plugin";
 export { CssExtractRspackPlugin } from "./builtin-plugin";
 export { RSCClientEntryPlugin } from "./builtin-plugin";
+export { RSCClientReferenceManifestRspackPlugin } from "./builtin-plugin";
+export { RSCServerReferenceManifestRspackPlugin } from "./builtin-plugin";
 
 ///// Rspack Postfixed Internal Loaders /////
 export type {
@@ -260,29 +262,4 @@ export type {
 	SwcLoaderTransformConfig,
 	SwcLoaderTsParserConfig
 } from "./builtin-loader/swc/index";
-<<<<<<< HEAD
 
-import * as lightningcss from "./builtin-loader/lightningcss/index";
-
-export { type LoaderOptions as LightningcssLoaderOptions } from "./builtin-loader/lightningcss/index";
-export { lightningcss };
-
-///// Experiments Stuff /////
-import { cleanupGlobalTrace, registerGlobalTrace } from "@rspack/binding";
-interface Experiments {
-	globalTrace: {
-		register: typeof registerGlobalTrace;
-		cleanup: typeof cleanupGlobalTrace;
-	};
-}
-
-export const experiments: Experiments = {
-	globalTrace: {
-		register: registerGlobalTrace,
-		cleanup: cleanupGlobalTrace
-	}
-};
-=======
-export { RSCClientEntryPlugin } from "./builtin-plugin";
-export { RSCClientReferenceManifestRspackPlugin } from "./builtin-plugin";
->>>>>>> 54206f3db (feat: client ref manifest plugin)
