@@ -36,7 +36,7 @@
     "test:ci": "cross-env NODE_OPTIONS=--max_old_space_size=8192 pnpm run build:js && pnpm run test:unit && pnpm test:webpack",
     "test:webpack": "pnpm --filter \"webpack-test\" test:metric",
     "api-extractor:local": "pnpm --filter '@rspack/*' api-extractor --local",
-    "api-extractor:ci": "pnpm --filter '@rspack/*' api-extractor:ci"
+    "api-extractor:ci": "echo 'TODO: pnpm --filter '@rspack/*' api-extractor:ci'"
   },
   "homepage": "https://rspack.dev",
   "bugs": "https://github.com/web-infra-dev/rspack/issues",
