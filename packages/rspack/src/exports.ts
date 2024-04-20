@@ -257,6 +257,7 @@ export { EvalDevToolModulePlugin } from "./builtin-plugin";
 export { CssExtractRspackPlugin } from "./builtin-plugin";
 export { RSCClientEntryPlugin } from "./builtin-plugin";
 export { RSCClientReferenceManifestRspackPlugin } from "./builtin-plugin";
+export { RSCServerReferenceManifestRspackPlugin } from "./builtin-plugin";
 
 ///// Rspack Postfixed Internal Loaders /////
 export type {
@@ -290,4 +291,3 @@ export const experiments: Experiments = {
 		cleanup: cleanupGlobalTrace
 	}
 };
-
