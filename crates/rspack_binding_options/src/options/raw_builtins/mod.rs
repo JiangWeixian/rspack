@@ -7,6 +7,7 @@ mod raw_ignore;
 mod raw_limit_chunk_count;
 mod raw_mf;
 mod raw_progress;
+mod raw_rsc;
 mod raw_swc_js_minimizer;
 mod raw_to_be_deprecated;
 
@@ -72,7 +73,7 @@ pub use self::{
   raw_banner::RawBannerPluginOptions, raw_copy::RawCopyRspackPluginOptions,
   raw_html::RawHtmlRspackPluginOptions, raw_ignore::RawIgnorePluginOptions,
   raw_limit_chunk_count::RawLimitChunkCountPluginOptions, raw_mf::RawContainerPluginOptions,
-  raw_progress::RawProgressPluginOptions,
+  raw_progress::RawProgressPluginOptions, raw_rsc::RawRSCClientEntryRspackPluginOptions,
   raw_swc_js_minimizer::RawSwcJsMinimizerRspackPluginOptions,
 };
 use self::{
@@ -437,7 +438,9 @@ impl BuiltinPlugin {
         );
       }
       BuiltinPluginName::RSCClientEntryRspackPlugin => {
-        plugins.push(RSCClientEntryRspackPlugin::default().boxed())
+        let plugin_options: RawRSCClientEntryRspackPluginOptions =
+          downcast_into::<RawRSCClientEntryRspackPluginOptions>(self.options)?;
+        plugins.push(RSCClientEntryRspackPlugin::new(plugin_options.into()).boxed())
       }
       BuiltinPluginName::RSCClientReferenceManifestRspackPlugin => {
         plugins.push(RSCClientReferenceManifestRspackPlugin::default().boxed())

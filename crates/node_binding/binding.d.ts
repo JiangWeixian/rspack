@@ -1162,6 +1162,11 @@ export interface RawReactOptions {
   refresh?: boolean
 }
 
+export interface RawReactRoute {
+  name: ChunkName
+  import: RoutePath
+}
+
 export interface RawRegexMatcher {
   source: string
   flags: string
@@ -1207,6 +1212,10 @@ export interface RawResolveTsconfigOptions {
   configFile: string
   referencesType: "auto" | "manual" | "disabled"
   references?: Array<string>
+}
+
+export interface RawRscClientEntryRspackPluginOptions {
+  routes?: Array<RawReactRoute>
 }
 
 export interface RawRspackFuture {
