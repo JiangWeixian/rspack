@@ -1436,6 +1436,10 @@ export interface RawResolveTsconfigOptions {
   references?: Array<string>
 }
 
+export interface RawRscClientEntryRspackPluginOptions {
+  routes?: Array<RawReactRoute>
+}
+
 export interface RawRspackFuture {
 
 }
