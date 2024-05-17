@@ -17,6 +17,10 @@ use rspack_error::{error, AnyhowError, Diagnostic, Result};
 use rspack_loader_runner::{Identifiable, Identifier, Loader, LoaderContext};
 use rspack_plugin_javascript::ast::{self, SourceMapConfig};
 use rspack_plugin_javascript::TransformOutput;
+use rspack_plugin_rsc::{
+  export_visitor::ImportExportVisitor, has_client_directive::has_client_directive,
+  rsc_visitor::ReactServerComponentsVisitor, RSCAdditionalData,
+};
 use rspack_util::source_map::SourceMapKind;
 use swc_config::{config_types::MergingOption, merge::Merge};
 use swc_core::base::config::{InputSourceMap, OutputCharset, TransformConfig};
@@ -127,6 +131,21 @@ impl Loader<LoaderRunnerContext> for SwcLoader {
     };
     let program = tokio::task::block_in_place(|| c.transform(built).map_err(AnyhowError::from))?;
     let ast = c.into_js_ast(program);
+
+    // TODO: only in rsc
+    ast.clone().transform(|program, _context| {
+      let mut rsc_visitor = ReactServerComponentsVisitor::new();
+      program.visit_with(&mut rsc_visitor);
+      if has_client_directive(&rsc_visitor.directives) {
+        let mut export_visitor: ImportExportVisitor = ImportExportVisitor::new();
+        program.visit_with(&mut export_visitor);
+        loader_context.additional_data.insert(RSCAdditionalData {
+          directives: rsc_visitor.directives,
+          exports: export_visitor.exports,
+        });
+        let rspack_ast = loader_context.additional_data.get::<RSCAdditionalData>();
+      }
+    });
 
     // If swc-loader is the latest loader available,
     // then loader produces AST, which could be used as an optimization.
