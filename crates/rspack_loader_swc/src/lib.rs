@@ -143,7 +143,6 @@ impl Loader<LoaderRunnerContext> for SwcLoader {
           directives: rsc_visitor.directives,
           exports: export_visitor.exports,
         });
-        let rspack_ast = loader_context.additional_data.get::<RSCAdditionalData>();
       }
     });
 
