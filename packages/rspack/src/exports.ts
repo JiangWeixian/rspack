@@ -239,4 +239,5 @@ export type { EvalDevToolModulePluginOptions } from "./builtin-plugin";
 
 export { CssExtractRspackPlugin } from "./builtin-plugin";
 export { RSCClientEntryRspackPlugin } from "./builtin-plugin";
+export { RSCProxyRspackPlugin } from "./builtin-plugin";
 export { RSCClientReferenceManifestRspackPlugin } from "./builtin-plugin";
