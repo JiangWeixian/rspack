@@ -501,6 +501,7 @@ export interface ExperimentsNormalized {
 	css?: boolean;
 	futureDefaults?: boolean;
 	rspackFuture?: RspackFutureOptions;
+	rsc?: boolean;
 }
 
 export type IgnoreWarningsNormalized = ((
