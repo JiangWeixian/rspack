@@ -3476,6 +3476,7 @@ dependencies = [
  "rspack_hook",
  "rspack_identifier",
  "rspack_ids",
+ "rspack_plugin_rsc",
  "rspack_regex",
  "rspack_util",
  "rustc-hash",

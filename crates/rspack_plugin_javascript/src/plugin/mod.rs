@@ -11,7 +11,6 @@ mod side_effects_flag_plugin;
 
 use std::borrow::Cow;
 use std::hash::Hash;
-mod react_server_components_plugin;
 
 pub use drive::*;
 pub use flag_dependency_exports_plugin::*;
@@ -20,7 +19,6 @@ use indoc::indoc;
 pub use mangle_exports_plugin::*;
 pub use module_concatenation_plugin::*;
 use once_cell::sync::Lazy;
-pub use react_server_components_plugin::*;
 use rspack_core::rspack_sources::{BoxSource, ConcatSource, RawSource, SourceExt};
 use rspack_core::{
   basic_function, render_init_fragments, ChunkInitFragments, ChunkRenderContext, ChunkUkey,
