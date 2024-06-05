@@ -3651,6 +3651,7 @@ dependencies = [
  "rspack_hash",
  "rspack_hook",
  "rspack_ids",
+ "rspack_plugin_rsc",
  "rspack_regex",
  "rspack_util",
  "rustc-hash 1.1.0",

@@ -15,7 +15,6 @@ mod side_effects_flag_plugin;
 use std::borrow::Cow;
 use std::collections::hash_map::Entry;
 use std::hash::Hash;
-mod react_server_components_plugin;
 
 pub use drive::*;
 pub use flag_dependency_exports_plugin::*;
