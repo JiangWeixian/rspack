@@ -14,11 +14,6 @@ module.exports = {
 	resolve: {
 		extensions: ["...", ".ts", ".tsx", ".jsx"]
 	},
-	devServer: {
-		devMiddleware: {
-			writeToDisk: true
-		}
-	},
 	module: {
 		rules: [
 			{
@@ -57,18 +52,6 @@ module.exports = {
 				]
 			}
 		]
-	},
-	optimization: {
-		sideEffects: "flag",
-		usedExports: true,
-		providedExports: true,
-		mangleExports: true,
-		moduleIds: "named"
-	},
-	experiments: {
-		rspackFuture: {
-			newTreeshaking: true
-		}
 	},
 	plugins: [
 		new rspack.DefinePlugin({
