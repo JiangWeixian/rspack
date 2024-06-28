@@ -114,6 +114,7 @@ out
 
 # Dist files
 dist
+!/packages/rspack-plugin-react-refresh/dist
 compiled
 webpack-dist
 
