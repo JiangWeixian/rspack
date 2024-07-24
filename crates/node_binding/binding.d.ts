@@ -3,8 +3,8 @@
 
 /* -- banner.d.ts -- */
 export type JsFilename =
-	| string
-	| ((pathData: JsPathData, assetInfo?: JsAssetInfo) => string);
+  | string
+  | ((pathData: JsPathData, assetInfo?: JsAssetInfo) => string);
 
 export type LocalJsFilename = JsFilename;
 
@@ -12,6 +12,7 @@ export type RawLazyCompilationTest = RegExp | ((m: JsModule) => boolean);
 /* -- banner.d.ts end -- */
 
 /* -- napi-rs generated below -- */
+<<<<<<< HEAD
 
 export class ExternalObject<T> {
   readonly '': {
@@ -160,6 +161,8 @@ export class JsStatsSize {
   size: number
 }
 
+=======
+>>>>>>> b951909f9 (perf: use rwlock and check asset version)
 export class Rspack {
   constructor(options: RawOptions, builtinPlugins: Array<BuiltinPlugin>, registerJsTaps: RegisterJsTaps, outputFilesystem: ThreadsafeNodeFS, resolverFactoryReference: JsResolverFactory)
   setNonSkippableRegisters(kinds: Array<RegisterJsTapKind>): void
@@ -168,30 +171,6 @@ export class Rspack {
   /** Rebuild with the given option passed to the constructor */
   rebuild(changed_files: string[], removed_files: string[], callback: (err: null | Error) => void): void
 }
-
-export function __chunk_graph_inner_get_chunk_entry_dependent_chunks_iterable(jsChunkUkey: number, compilation: JsCompilation): Array<JsChunk>
-
-export function __chunk_graph_inner_get_chunk_entry_modules(jsChunkUkey: number, compilation: JsCompilation): Array<JsModule>
-
-export function __chunk_graph_inner_get_chunk_modules(jsChunkUkey: number, compilation: JsCompilation): Array<JsModule>
-
-export function __chunk_graph_inner_get_chunk_modules_iterable_by_source_type(jsChunkUkey: number, sourceType: string, compilation: JsCompilation): Array<JsModule>
-
-export function __chunk_group_inner_get_chunk_group(ukey: number, compilation: JsCompilation): JsChunkGroup
-
-export function __chunk_inner_can_be_initial(jsChunkUkey: number, compilation: JsCompilation): boolean
-
-export function __chunk_inner_get_all_async_chunks(jsChunkUkey: number, compilation: JsCompilation): Array<JsChunk>
-
-export function __chunk_inner_get_all_initial_chunks(jsChunkUkey: number, compilation: JsCompilation): Array<JsChunk>
-
-export function __chunk_inner_get_all_referenced_chunks(jsChunkUkey: number, compilation: JsCompilation): Array<JsChunk>
-
-export function __chunk_inner_has_runtime(jsChunkUkey: number, compilation: JsCompilation): boolean
-
-export function __chunk_inner_is_only_initial(jsChunkUkey: number, compilation: JsCompilation): boolean
-
-export function __entrypoint_inner_get_runtime_chunk(ukey: number, compilation: JsCompilation): JsChunk
 
 export interface BuiltinPlugin {
   name: BuiltinPluginName
@@ -277,6 +256,7 @@ export enum BuiltinPluginName {
 
 export function cleanupGlobalTrace(): void
 
+<<<<<<< HEAD
 export interface ContextInfo {
   issuer: string
 }
@@ -468,6 +448,8 @@ export interface JsFactoryMeta {
   sideEffectFree?: boolean
 }
 
+=======
+>>>>>>> b951909f9 (perf: use rwlock and check asset version)
 export interface JsLoaderContext {
   resourceData: Readonly<JsResourceData>
   /** Will be deprecated. Use module.module_identifier instead */
@@ -501,6 +483,7 @@ export enum JsLoaderState {
   Normal = 'Normal'
 }
 
+<<<<<<< HEAD
 export interface JsModule {
   context?: string
   originalSource?: JsCompatSource
@@ -723,21 +706,11 @@ export interface JsStatsWarning {
   moduleTrace: Array<JsStatsModuleTrace>
 }
 
+=======
+>>>>>>> b951909f9 (perf: use rwlock and check asset version)
 export interface JsTap {
   function: (...args: any[]) => any
   stage: number
-}
-
-export interface NodeFS {
-  writeFile: (...args: any[]) => any
-  removeFile: (...args: any[]) => any
-  mkdir: (...args: any[]) => any
-  mkdirp: (...args: any[]) => any
-}
-
-export interface PathWithInfo {
-  path: string
-  info: JsAssetInfo
 }
 
 export interface RawAliasOptionItem {
@@ -1639,13 +1612,5 @@ export interface RegisterJsTaps {
   registerContextModuleFactoryBeforeResolveTaps: (stages: Array<number>) => Array<{ function: ((arg: false | JsContextModuleFactoryBeforeResolveData) => Promise<false | JsContextModuleFactoryBeforeResolveData>); stage: number; }>
   registerContextModuleFactoryAfterResolveTaps: (stages: Array<number>) => Array<{ function: ((arg: false | JsContextModuleFactoryAfterResolveData) => Promise<false | JsContextModuleFactoryAfterResolveData>); stage: number; }>
   registerJavascriptModulesChunkHashTaps: (stages: Array<number>) => Array<{ function: ((arg: JsChunk) => Buffer); stage: number; }>
-}
-
-export interface ThreadsafeNodeFS {
-  writeFile: (name: string, content: Buffer) => Promise<void> | void
-  removeFile: (name: string) => Promise<void> | void
-  mkdir: (name: string) => Promise<void> | void
-  mkdirp: (name: string) => Promise<string | void> | string | void
-  removeDirAll: (name: string) => Promise<string | void> | string | void
 }
 
