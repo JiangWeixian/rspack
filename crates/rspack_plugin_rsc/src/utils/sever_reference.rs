@@ -119,10 +119,9 @@ impl RSCServerReferenceManifest {
             Some(build_info) => has_server_directive(&build_info.directives),
             None => false,
           };
-          let resource = &resolved_data
-            .expect("TODO:")
-            .resource_path
-            .to_str()
+          let resource = resolved_data
+            .and_then(|f| f.resource_path.as_ref())
+            .and_then(|f| f.to_str())
             .expect("TODO:");
 
           if chunk_group.name().is_some() {

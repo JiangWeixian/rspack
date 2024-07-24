@@ -44,34 +44,41 @@ pub const RSC_SERVER_ACTION_CLIENT_LOADER_IDENTIFIER: &str =
 #[async_trait::async_trait]
 impl Loader<RunnerContext> for RSCServerActionClientLoader {
   async fn run(&self, loader_context: &mut LoaderContext<RunnerContext>) -> Result<()> {
-    let resource_path = loader_context.resource_path().to_path_buf();
+    let resource_path = loader_context
+      .resource_path()
+      .and_then(|f| Some(f.to_path_buf()));
     let content = std::mem::take(&mut loader_context.content).expect("content should be available");
 
     let rsc_info = loader_context.additional_data.get::<RSCAdditionalData>();
-    if let Some(RSCAdditionalData {
+
+    let Some(resource_path) = resource_path else {
+      return Ok(());
+    };
+
+    let Some(RSCAdditionalData {
       directives,
       exports,
     }) = rsc_info
-    {
-      if has_server_directive(directives) {
-        let mut source = format!(
-          r#"
+    else {
+      return Ok(());
+    };
+
+    if has_server_directive(directives) {
+      let mut source = format!(
+        r#"
 import {{ createServerReference }} from "{}";
         "#,
-          self.options.server_proxy,
-        );
-        let code = exports
-          .iter()
-          .map(|f| {
-            let id = generate_action_id(resource_path.to_str().unwrap(), &f.n);
-            format!(r#"export const {} = createServerReference("{}");"#, f.n, id)
-          })
-          .join("\n");
-        source = format!("{}{}", source, code);
-        loader_context.content = Some(source.into());
-      } else {
-        loader_context.content = Some(content);
-      }
+        self.options.server_proxy,
+      );
+      let code = exports
+        .iter()
+        .map(|f| {
+          let id = generate_action_id(resource_path.to_str().unwrap(), &f.n);
+          format!(r#"export const {} = createServerReference("{}");"#, f.n, id)
+        })
+        .join("\n");
+      source = format!("{}{}", source, code);
+      loader_context.content = Some(source.into());
     } else {
       loader_context.content = Some(content);
     }

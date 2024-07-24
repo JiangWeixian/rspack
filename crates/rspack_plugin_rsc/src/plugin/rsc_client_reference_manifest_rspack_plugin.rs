@@ -192,6 +192,8 @@ impl RSCClientReferenceManifest {
           let resource = &resolved_data
             .expect("TODO:")
             .resource_path
+            .as_ref()
+            .expect("TODO:")
             .to_str()
             .expect("TODO:");
           if !self.is_client_request(&resource).await {

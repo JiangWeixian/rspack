@@ -1,7 +1,7 @@
 import { BuiltinPluginName } from "@rspack/binding";
 import type { RawRscClientEntryRspackPluginOptions } from "@rspack/binding";
 
-import path from "path";
+import path from "node:path";
 import type { Compiler } from "../Compiler";
 import { create } from "./base";
 import type { RspackBuiltinPlugin } from "./base";
