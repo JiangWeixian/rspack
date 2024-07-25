@@ -262,3 +262,24 @@ export type {
 	SwcLoaderTransformConfig,
 	SwcLoaderTsParserConfig
 } from "./builtin-loader/swc/index";
+
+import * as lightningcss from "./builtin-loader/lightningcss/index";
+
+export { type LoaderOptions as LightningcssLoaderOptions } from "./builtin-loader/lightningcss/index";
+export { lightningcss };
+
+///// Experiments Stuff /////
+import { cleanupGlobalTrace, registerGlobalTrace } from "@rspack/binding";
+interface Experiments {
+	globalTrace: {
+		register: typeof registerGlobalTrace;
+		cleanup: typeof cleanupGlobalTrace;
+	};
+}
+
+export const experiments: Experiments = {
+	globalTrace: {
+		register: registerGlobalTrace,
+		cleanup: cleanupGlobalTrace
+	}
+};

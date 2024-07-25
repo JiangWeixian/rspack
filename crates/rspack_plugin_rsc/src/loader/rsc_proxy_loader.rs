@@ -39,28 +39,18 @@ pub const RSC_PROXY_LOADER_IDENTIFIER: &str = "builtin:rsc-proxy-loader";
 #[async_trait::async_trait]
 impl Loader<RunnerContext> for RSCProxyLoader {
   async fn run(&self, loader_context: &mut LoaderContext<RunnerContext>) -> Result<()> {
-    let resource_path = loader_context
-      .resource_path()
-      .and_then(|f| Some(f.to_path_buf()));
     let content = std::mem::take(&mut loader_context.content).expect("content should be available");
+    let resource_path = loader_context.resource_path().and_then(|f| f.to_str());
 
     let rsc_info = loader_context.additional_data.get::<RSCAdditionalData>();
-
-    let Some(resource_path) = resource_path else {
-      return Ok(());
-    };
-
-    let Some(RSCAdditionalData {
+    if let Some(RSCAdditionalData {
       directives,
       exports,
     }) = rsc_info
-    else {
-      return Ok(());
-    };
-
-    if has_client_directive(directives) {
-      let mut source = format!(
-        r#"
+    {
+      if has_client_directive(directives) {
+        let mut source = format!(
+          r#"
 import {{ createProxy }} from "{}"
 const proxy = createProxy({:?})
 
@@ -70,32 +60,35 @@ const proxy = createProxy({:?})
 // is a client boundary.
 const {{ __esModule, $$typeof }} = proxy;
 const __default__ = proxy.default
-      "#,
-        self.options.client_proxy,
-        resource_path.to_str().unwrap()
-      );
-      let mut cnt = 0;
-      for export in exports.into_iter() {
-        let n = &export.n;
-        if n == "" {
-          source += r#"\nexports[\'\'] = proxy[\'\'];"#;
-        } else if n == DEFAULT_EXPORT {
-          source += r#"
+        "#,
+          self.options.client_proxy,
+          resource_path.unwrap()
+        );
+        let mut cnt = 0;
+        for export in exports.into_iter() {
+          let n = &export.n;
+          if n == "" {
+            source += r#"\nexports[\'\'] = proxy[\'\'];"#;
+          } else if n == DEFAULT_EXPORT {
+            source += r#"
 export { __esModule, $$typeof };
 export default __default__;
-          "#;
-        } else {
-          source += &format!(
-            r#"
+            "#;
+          } else {
+            source += &format!(
+              r#"
 const e{} = proxy["{}"];
 export {{ e{} as {} }};
-          "#,
-            cnt, n, cnt, n
-          );
-          cnt += 1;
+            "#,
+              cnt, n, cnt, n
+            );
+            cnt += 1;
+          }
         }
+        loader_context.content = Some(source.into());
+      } else {
+        loader_context.content = Some(content);
       }
-      loader_context.content = Some(source.into());
     } else {
       loader_context.content = Some(content);
     }
